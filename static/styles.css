@@ -1,28 +1,54 @@
-nav {
-    background: #466348;
-    color: white;
-    padding: 15px;
+body {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-nav ul {
+nav {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 14px 48px;
+    background: linear-gradient(90deg, #224e01, #1e8511);
+    color: white;
+}
+
+.nav-center {
     list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
     margin: 0;
     padding: 0;
-    display: flex;
-    gap: 20px;  
-}
-    
-nav ul li {
-    display: inline-block;
 }
 
-nav a {
+.nav-center a {
     color: white;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 14.5px;
+    font-weight: 500;
+    opacity: 0.85;
 }
 
-nav a:hover {
-    text-decoration: underline;
+.nav-center a:hover {
+    opacity: 1;
+}
+
+.nav-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-right a {
+    color: white;
+    text-decoration: none;
+    font-size: 14.5px;
+    opacity: 0.85;
+}
+
+.nav-right a:hover {
+    opacity: 1;
+}
+
+.login {
+    font-weight: 600;
 }
