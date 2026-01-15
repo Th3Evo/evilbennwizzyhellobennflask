@@ -40,6 +40,19 @@ def initProducts():
         {
             "slug": "solar",
             "name": "Solar Panels",
+            "description": "High-efficiency solar panels for residential and commercial use.",
+        },
+        
+        {
+            "slug": "EV",
+            "name": "EV Charging Stations",
+            "description": "Durable EV charging stations for sustainable energy generation.",
+        },
+
+        {
+            "slug": "EMS",
+            "name": "Energy Management Systems",
+            "description": "Advanced energy management systems for optimizing power consumption.",
         }
     ]
 
