@@ -15,6 +15,7 @@ def init_db():
     c.execute("""
     CREATE TABLE IF NOT EXISTS products(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        slug TEXT UNIQUE NOT NULL,
         name TEXT UNIQUE NOT NULL,
         description TEXT,
         conslength INTEGER
@@ -23,15 +24,28 @@ def init_db():
 
     c.execute("""
     CREATE TABLE IF NOT EXISTS users(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT UNIQUE NOT NULL,
+        user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL
     )
-    """)
+    """)    
     conn.commit()
     conn.close()
 
-init_db()
+def initProducts():
+    conn = get_db()
+    c = conn.cursor()
+
+    products = [
+        {
+            "slug": "solar",
+            "name": "Solar Panels",
+        }
+    ]
+
+
+
+
 
 @app.route("/")
 def home():
@@ -53,6 +67,12 @@ def bookings():
 def login():
     return render_template("login.html")
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/login")
+
+
 if __name__ == "__main__":
     init_db()
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(debug=True)

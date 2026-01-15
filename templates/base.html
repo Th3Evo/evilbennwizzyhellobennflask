@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ title if title else "Rosla Energy" }}</title>
+    <title>{{ title if title else "Rosla Energy Solutions" }}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
@@ -10,7 +10,7 @@
 
     <nav class="navbar">
         <div class="nav-left">
-            <span class="logo">Rosla</span>
+            <span class="logo">Rosla Technologies</span>
         </div>
     
         <ul class="nav-center">
@@ -20,8 +20,14 @@
         </ul>
     
         <div class="nav-right">
-            <a href="#">Support</a>
-            <a href="#" class="login">Log in</a>
+            <a href="/information">Info</a>
+
+
+            {% if session.get('user_id') %}
+                <a href="/logout" class="login">Logout ({{ session['username'] }})</a>
+            {% else %}
+                <a href="/login" class="login">Log-In</a>
+            {% endif %}
         </div>
     </nav>
     

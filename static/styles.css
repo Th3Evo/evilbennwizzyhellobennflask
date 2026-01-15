@@ -7,8 +7,9 @@ nav {
     grid-template-columns: auto 1fr auto;
     align-items: center;
     padding: 14px 48px;
-    background: linear-gradient(90deg, #224e01, #1e8511);
+    background: linear-gradient(45deg, #224e01, #1e8511);
     color: white;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 .nav-center {
@@ -30,7 +31,7 @@ nav {
 
 .nav-center a:hover {
     opacity: 1;
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
 .nav-right {
     display: flex;
