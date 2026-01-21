@@ -37,14 +37,18 @@ def initProducts():
     c = conn.cursor()
 
     products = [
-        {
-            "slug": "solar",
-            "name": "Solar Panels",
-        }
+        ("solar", "Solar Panels", "High-efficiency solar panels for residential and commercial use.", 12),
+        ("EV", "EV Charging Stations", "Durable EV charging stations for sustainable energy generation.", 6),
+        ("EMS", "Energy Management Systems", "Advanced energy management systems for optimizing power consumption.", 3),
     ]
 
+    c.executemany("""
+        INSERT OR IGNORE INTO products (slug, name, description, conslength)
+        VALUES (?, ?, ?, ?)
+    """, products)
 
-
+    conn.commit()
+    conn.close()
 
 
 @app.route("/")
@@ -53,7 +57,15 @@ def home():
 
 @app.route("/products")
 def products():
-    return render_template("products.html")
+    conn = get_db()
+    c = conn.cursor()
+
+    c.execute("SELECT slug, name, description FROM products")
+    products = c.fetchall()
+
+    conn.close()
+    return render_template("products.html", products=products)
+
 
 @app.route("/information")
 def information():
@@ -75,4 +87,5 @@ def logout():
 
 if __name__ == "__main__":
     init_db()
+    initProducts()
     app.run(debug=True)
